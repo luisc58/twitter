@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import BDBOAuth1Manager
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +17,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        if User.currentUser != nil {
+            let storyBoard = UIStoryboard(name: "Main", bundle : nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "mainView")
+            window?.rootViewController = vc
+            
+            NotificationCenter.default.addObserver(forName: User.userDidLogOut, 
+                                                   object: nil, 
+                                                   queue: OperationQueue.main) { (notification) in
+                                                    let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                                                    let vc = storyboard.instantiateInitialViewController()
+                                                    self.window?.rootViewController = vc  
+            }
+                                                 
+            
+        }
         return true
     }
 
@@ -43,6 +59,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
     }
+    
+    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+       
+        TwitterClient.sharedInstance?.handleOpenURL(url)
+   
+        return true
+    }
+
 
     // MARK: - Core Data stack
 
