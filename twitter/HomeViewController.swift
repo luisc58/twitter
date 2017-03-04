@@ -19,6 +19,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var subname: UILabel!
     
     var tweets: [Tweet]!
+    var tweet : Tweet?
     var user : User?
     
     override func viewDidLoad() {
@@ -134,12 +135,24 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       // let cell = sender as! TableViewCell
-        //let indexPath = tableView.indexPath(for: cell)
-       // let tweet = tweets[indexPath!.row]
-        //let detailedViewController = segue.destination as! UserPageViewController
-        //detailedViewController.tweets = tweet
+        if(segue.identifier == "detailView") {
+         let cell = sender as! TableViewCell
+         let indexPath = tableView.indexPath(for: cell)
+         tweet = tweets[indexPath!.row]
+         let detailedViewController = segue.destination as! TweetViewController
+         detailedViewController.tweets = tweet
+          
         
+        
+            
+        }
+        
+        if(segue.identifier == "user") {
+            
+                      
+        }
+        
+               
     }
     
     

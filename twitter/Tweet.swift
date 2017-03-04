@@ -21,6 +21,7 @@ class Tweet: NSObject {
     var username : String?
     var tweetID: String?
     var handle  = "@"
+    static var length = 140
    
     
     private var dateFormatter : DateFormatter = {
