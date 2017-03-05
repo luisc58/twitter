@@ -1,10 +1,3 @@
-//
-//  HomeViewController.swift
-//  twitter
-//
-//  Created by luis castillo on 2/24/17.
-//  Copyright © 2017 luis castillo. All rights reserved.
-//
 
 import UIKit
 
@@ -63,10 +56,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func logOut(_ sender: Any) { TwitterClient.sharedInstance?.logout() }
     
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tweets?.count ?? 0
-    }
-    
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {   return tweets?.count ?? 0 }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
@@ -85,9 +75,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {    tableView.deselectRow(at: indexPath, animated: true)    }
     
     
     func onFavorite(for cell:TableViewCell) {
@@ -134,7 +122,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
+    var indexPath : NSIndexPath!
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        //[DIFFERENT SEGUES IN ONE VIEW CONTROLLER]]]]]
         if(segue.identifier == "detailView") {
          let cell = sender as! TableViewCell
          let indexPath = tableView.indexPath(for: cell)
@@ -142,23 +134,24 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
          let detailedViewController = segue.destination as! TweetViewController
          detailedViewController.tweets = tweet
           
-        
-        
-            
         }
         
+        //[IN THIS CASE WE WANT TO ACCESS INDEXPATH.ROW THROUGH THE UIBUTTON]]]]]
         if(segue.identifier == "user") {
-            
-                      
+            if let button = sender as? UIButton {
+                if let superview = button.superview {   //GET BUTTON'S SUPERVIEW
+                    if let cell = superview.superview as? UITableViewCell {    
+                        indexPath = tableView.indexPath(for: cell) as NSIndexPath!
+                        tweet = tweets[indexPath.row]
+                        print("\(indexPath.row)") //[TESTING!! OUTPUTS ROW NUMBER]
+                        let userView = segue.destination as! UserPageViewController
+                        userView.tweets = tweet
+                    } 
+                }
+            }
         }
-        
-               
     }
-    
-    
-        
 }
-
 
 
 

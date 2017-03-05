@@ -398,10 +398,10 @@
             </objects>
             <point key="canvasLocation" x="1565.5999999999999" y="121.88905547226388"/>
         </scene>
-        <!--View Controller-->
+        <!--User Page View Controller-->
         <scene sceneID="aWg-GS-T34">
             <objects>
-                <viewController id="5qU-2Z-p9D" sceneMemberID="viewController">
+                <viewController id="5qU-2Z-p9D" customClass="UserPageViewController" customModule="twitter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Bda-VZ-qWp"/>
                         <viewControllerLayoutGuide type="bottom" id="U9M-Vi-9eM"/>
@@ -573,6 +573,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="followersCount" destination="37f-qO-3IF" id="mMD-FO-Z4G"/>
+                        <outlet property="followingCount" destination="5zI-zg-D31" id="0jz-yA-ve3"/>
+                        <outlet property="header" destination="ZHr-Ce-8bc" id="ujA-pE-1Il"/>
+                        <outlet property="name" destination="0aA-Ht-Wke" id="xiQ-wT-ctu"/>
+                        <outlet property="profileImage" destination="zKp-Ry-4wU" id="85i-qg-CCE"/>
+                        <outlet property="screenName" destination="uJI-Tr-zKr" id="oUI-aO-r4g"/>
+                        <outlet property="tweetsCount" destination="vgC-bq-dU2" id="UMr-HN-es9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jDW-75-lDo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
