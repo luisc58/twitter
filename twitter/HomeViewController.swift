@@ -6,8 +6,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var headerImage: UIView!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var bannerImage: UIImageView!
-    
-
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var subname: UILabel!
     
@@ -132,11 +130,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
          let indexPath = tableView.indexPath(for: cell)
          tweet = tweets[indexPath!.row]
          let detailedViewController = segue.destination as! TweetViewController
-         detailedViewController.tweets = tweet
+         detailedViewController.tweets = tweet  //|||[MAKE SURE TP CREATE A TWEET VAR INSIDE YOUR CONTROLLER AND IMPLEMENT ON VIEWDIDLOAD]!!!!
           
         }
         
-        //[IN THIS CASE WE WANT TO ACCESS INDEXPATH.ROW THROUGH THE UIBUTTON]]]]]
+        //[IN THIS CASE WE WANT TO ACCESS INDEXPATH.ROW THROUGH THE UIBUTTON]]]]]    FOR BUTTON INSIDE IMAGE 
         if(segue.identifier == "user") {
             if let button = sender as? UIButton {
                 if let superview = button.superview {   //GET BUTTON'S SUPERVIEW

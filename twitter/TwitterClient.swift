@@ -17,7 +17,7 @@ class TwitterClient: BDBOAuth1SessionManager {
     
     func homeTimeline(success: @escaping ( ([Tweet] ) -> ()), failure: @escaping (Error) -> () ) {
         get("1.1/statuses/home_timeline.json",
-            parameters: nil, 
+            parameters: nil,                                            
             progress: nil, 
             success: { (task, response) in
                 
@@ -32,10 +32,29 @@ class TwitterClient: BDBOAuth1SessionManager {
     }
     
     
-    func userWithSreenName(_ screenName: String, success: @escaping ((User) -> ()), failure : @escaping (Error) -> ()) {
-        get("1.1/users/show.json",
+    func userTimeline(with screenName: String, success: @escaping (([Tweet]) -> ()), failure : @escaping (Error) -> ()) {
+        
+        get("1.1/statuses/user_timeline.json", //|||user_timeline get method 
             parameters: ["screen_name" : screenName],
             progress: nil,
+            success: { (task, response) in
+                
+                let dictionaries = response as! [NSDictionary]
+                let tweets = Tweet.tweetsWithArray(dictionaries: dictionaries)
+                                            //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+                success(tweets)             //|||[THIS IS USED TO GET TWEETS THAT CORRESPONG TO USER]||||
+                                            //|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+                
+        }, failure: { (task, error) in
+            failure(error)
+        })
+    }
+    
+    
+    func userWithSreenName(_ screenName: String, success: @escaping ((User) -> ()), failure : @escaping (Error) -> ()) {
+        get("1.1/users/show.json",
+            parameters: ["screen_name" : screenName],       //|||||||||||||||||
+            progress: nil,                                  //||||[THIS IS USED TO ASSOCIATE USER ACCORDING TO SCREENAME]
             success: { (task, response) in
                 
                 let dictionary = response as!NSDictionary
@@ -46,6 +65,8 @@ class TwitterClient: BDBOAuth1SessionManager {
             failure(error)
         })
     }
+    
+  
     
     func currentAccount(success: @escaping ((User) -> ()), failure : @escaping ((Error) -> ())) {
         

@@ -11,7 +11,7 @@ import UIKit
 class corners: UIImageView {
     
     override func awakeFromNib() {
-        layer.cornerRadius = 4.8
+        layer.cornerRadius = 5.2
         layer.masksToBounds = true 
     }
     

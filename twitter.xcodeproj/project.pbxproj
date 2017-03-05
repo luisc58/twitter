@@ -24,6 +24,7 @@
 		DE8E597D1E6A0124000CEF45 /* corners.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E597C1E6A0124000CEF45 /* corners.swift */; };
 		DE8E597F1E6A2533000CEF45 /* textfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E597E1E6A2533000CEF45 /* textfield.swift */; };
 		DE8E59821E6A282D000CEF45 /* ReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E59811E6A282D000CEF45 /* ReplyViewController.swift */; };
+		DE8E59841E6BE7EC000CEF45 /* TweetCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E59831E6BE7EC000CEF45 /* TweetCellTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		DE8E597C1E6A0124000CEF45 /* corners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = corners.swift; sourceTree = "<group>"; };
 		DE8E597E1E6A2533000CEF45 /* textfield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = textfield.swift; sourceTree = "<group>"; };
 		DE8E59811E6A282D000CEF45 /* ReplyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplyViewController.swift; sourceTree = "<group>"; };
+		DE8E59831E6BE7EC000CEF45 /* TweetCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCellTableViewCell.swift; sourceTree = "<group>"; };
 		DF6B46CA3D7B93474B92A930 /* Pods-twitter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-twitter.release.xcconfig"; path = "Pods/Target Support Files/Pods-twitter/Pods-twitter.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				DE194B491E6155CF0034CB27 /* TableViewCell.swift */,
+				DE8E59831E6BE7EC000CEF45 /* TweetCellTableViewCell.swift */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE2BE6F41E5E548E00EB8137 /* User.swift in Sources */,
+				DE8E59841E6BE7EC000CEF45 /* TweetCellTableViewCell.swift in Sources */,
 				DE194B4A1E6155CF0034CB27 /* TableViewCell.swift in Sources */,
 				DE8E597B1E67FED9000CEF45 /* UserPageViewController.swift in Sources */,
 				DE8E59821E6A282D000CEF45 /* ReplyViewController.swift in Sources */,

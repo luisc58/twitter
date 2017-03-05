@@ -25,8 +25,9 @@ class TweetViewController: UIViewController {
 
     func reply() {}
     
-    private func viewloaded() {
-        username.text = tweets.username
+    private func viewloaded() {                                     //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+                                                                    //[HERE I CREATED A SEPARATE FUNC AND THEN CALLED IT IN VIEWDIDLOAD]
+        username.text = tweets.username                             //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
         userImage.setImageWith(tweets.imgUrl!)
         screenName.text = tweets.handle
         tweetText.text = tweets.text
@@ -49,7 +50,7 @@ class TweetViewController: UIViewController {
         retweets.text = "\(tweets.retweetCount)"
     }
     
-    @IBAction func retweet(_ sender: Any) {
+    @IBAction func retweet(_ sender: Any) {     //|||NOT DONE WITH THESE....COME BACK 
         
     }
     
