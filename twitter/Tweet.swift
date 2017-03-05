@@ -1,10 +1,4 @@
-//
-//  Tweet.swift
-//  twitter
-//
-//  Created by luis castillo on 2/24/17.
-//  Copyright © 2017 luis castillo. All rights reserved.
-//
+
 
 import UIKit
 
@@ -18,8 +12,10 @@ class Tweet: NSObject {
     var retweeted : Bool?
     var retweetedStatus : Bool?
     var imgUrl : URL?
+    var header: URL?
     var username : String?
     var tweetID: String?
+    var followersCount : Int?
     var handle  = "@"
     static var length = 140
    
@@ -37,12 +33,13 @@ class Tweet: NSObject {
         text = dictionary["text"] as? String
         favorited = dictionary["favorited"] as? Bool
         retweeted = dictionary["retweeted"] as? Bool
+        followersCount = dictionary["followers_count"] as? Int
         tweetID = dictionary["id_str"] as? String
         username = dictionary.value(forKeyPath: "user.name") as? String
         retweetCount = (dictionary["retweet_count"] as? Int) ?? 0
         favoritesCount = (dictionary["favorite_count"] as? Int) ?? 0
-        
         handle += dictionary.value(forKeyPath: "user.screen_name") as! String
+        
         if let timestampValue = dictionary["created_at"] as? String {
             timestamp = dateFormatter.date(from: timestampValue) 
         }
@@ -51,8 +48,10 @@ class Tweet: NSObject {
             imgUrl = URL(string: profileImageURLString)
         }
         
-        
-
+        let banner = dictionary["profile_banner_url"] as! String?
+        if let banner = banner {
+            header = URL(string: banner)
+        }
     }
     
     

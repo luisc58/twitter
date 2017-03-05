@@ -31,6 +31,22 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
+    
+    func userWithSreenName(_ screenName: String, success: @escaping ((User) -> ()), failure : @escaping (Error) -> ()) {
+        get("1.1/users/show.json",
+            parameters: ["screen_name" : screenName],
+            progress: nil,
+            success: { (task, response) in
+                
+                let dictionary = response as!NSDictionary
+                let user = User(dictionary: dictionary)
+                success(user)
+                
+        }, failure: { (task, error) in
+            failure(error)
+        })
+    }
+    
     func currentAccount(success: @escaping ((User) -> ()), failure : @escaping ((Error) -> ())) {
         
         get( "1.1/account/verify_credentials.json", 

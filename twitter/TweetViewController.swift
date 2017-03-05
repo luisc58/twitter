@@ -31,13 +31,10 @@ class TweetViewController: UIViewController {
         screenName.text = tweets.handle
         tweetText.text = tweets.text
         
-        if tweets.favorited!  {
-            likeButton.setImage(UIImage(named: "favor-icon-red"), for: .normal)
-            
+        if tweets.favorited!  { likeButton.setImage(UIImage(named: "favor-icon-red"), for: .normal)
         }
         else{
             likeButton.setImage(UIImage(named: "favor-icon"), for: .normal)
-            
         }
         
         if tweets.retweeted!{

@@ -15,12 +15,15 @@ class User: NSObject {
     var bannerUrl: URL?
     var tagline: String?
     var dictionary : NSDictionary?
+    var followersCount : Int?
+    var followingCount : Int?
     
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
         name = dictionary["name"] as! String?
         screenname = dictionary["screen_name"] as! String?
-        
+        followersCount = dictionary["followers_count"] as? Int
+        followingCount = dictionary["friends_count"] as? Int
         let profileUrlString = dictionary["profile_image_url_https"] as! String?
         
         if let profileUrlString = profileUrlString {
@@ -38,6 +41,10 @@ class User: NSObject {
     static let userDidLogOut = NSNotification.Name(rawValue: "UserDidLogout")
     
     static var _currentUser : User?
+    
+    class func userWithScreenName(_ screeenName: String, success: @escaping ((User) -> ()), failure : @escaping (Error) -> ()) {
+        TwitterClient.sharedInstance?.userWithSreenName(screeenName, success: success, failure: failure)
+    }
     
     class var currentUser : User? {
     

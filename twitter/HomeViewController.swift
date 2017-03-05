@@ -1,7 +1,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate{
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerImage: UIView!
     @IBOutlet weak var profileImage: UIImageView!
@@ -144,7 +144,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                         indexPath = tableView.indexPath(for: cell) as NSIndexPath!
                         tweet = tweets[indexPath.row]
                         print("\(indexPath.row)") //[TESTING!! OUTPUTS ROW NUMBER]
-                        let userView = segue.destination as! UserPageViewController
+                        let userView = segue.destination as! UserPageViewController 
                         userView.tweets = tweet
                     } 
                 }
